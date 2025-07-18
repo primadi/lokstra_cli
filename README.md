@@ -135,39 +135,32 @@ lokstra init plugin logger-plugin --template custom-plugin
 
 #### Project Type Details
 
-##### Server (`lokstra init server my-app`)
-Creates a complete Lokstra server application with:
-- HTTP routing configuration
-- Request handlers implementation
-- Middleware stack setup
-- Service layer architecture
-- Ready-to-run main application
+| Project Type | Description | Use Case | Components Included |
+|--------------|-------------|----------|-------------------|
+| **Server** | Complete Lokstra server application | Full production-ready application | • HTTP routing configuration<br>• Request handlers implementation<br>• Middleware stack setup<br>• Service layer architecture<br>• Ready-to-run main application |
+| **Module** | Reusable collection of components | Shared functionality across projects | • Multiple handlers for different endpoints<br>• Multiple middleware components<br>• Multiple service implementations<br>• Designed to be imported by other projects |
+| **Service** | Single service component | Focused business logic domain | • Service interface and implementation<br>• Business logic for specific domain<br>• Lightweight and single-purpose<br>• Can be imported and used by other projects |
+| **Middleware** | Single middleware component | HTTP request/response processing | • HTTP request/response processing logic<br>• Reusable across different applications<br>• Follows Lokstra middleware patterns<br>• Can be imported by servers and modules |
+| **Plugin** | Collection similar to module | Dynamic loading and hot-swapping | • Handlers, middlewares, and services<br>• Compiled as shared object (.so) binary<br>• Can be dynamically loaded at runtime<br>• Provides hot-swappable functionality |
 
-##### Module (`lokstra init module my-module`)
-Creates a reusable collection containing:
-- Multiple handlers for different endpoints
-- Multiple middleware components
-- Multiple service implementations
-- Designed to be imported by other projects
-- Provides shared functionality across applications
+### Usage Examples by Project Type
 
-##### Service (`lokstra init service my-service`)
-Creates a single service component with:
-- Focused service interface and implementation
-- Business logic for specific domain
-- Can be imported and used by other projects
-- Lightweight and single-purpose
+```bash
+# Server - Complete application
+lokstra init server my-api --module github.com/company/my-api
 
-##### Middleware (`lokstra init middleware my-middleware`)
-Creates a single middleware component with:
-- HTTP request/response processing logic
-- Reusable across different applications
-- Follows Lokstra middleware patterns
-- Can be imported by servers and modules
+# Module - Reusable component collection  
+lokstra init module auth-module --module github.com/company/modules/auth
 
-##### Plugin (`lokstra init plugin my-plugin`)
-Creates a plugin collection similar to module but:
-- Designed to be compiled as shared object (.so) binary
+# Service - Single service component
+lokstra init service user-service --module github.com/company/services/user
+
+# Middleware - Single middleware component
+lokstra init middleware cors-middleware --module github.com/company/middleware/cors
+
+# Plugin - Dynamic loadable collection
+lokstra init plugin analytics-plugin --module github.com/company/plugins/analytics
+```
 
 
 #### What Gets Generated
