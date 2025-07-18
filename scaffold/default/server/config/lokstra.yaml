@@ -1,0 +1,9 @@
+apps:
+  - name: main
+    address: :8080
+    # listener_type: default
+    # routing_engine_type: default
+    middleware:
+      - name: lokstra.recovery
+
+services: []
