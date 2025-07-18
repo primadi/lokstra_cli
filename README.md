@@ -141,7 +141,7 @@ lokstra init plugin logger-plugin --template custom-plugin
 | **Module** | Reusable collection of components | Shared functionality across projects | • Multiple handlers for different endpoints<br>• Multiple middleware components<br>• Multiple service implementations<br>• Designed to be imported by other projects |
 | **Service** | Single service component | Focused business logic domain | • Service interface and implementation<br>• Business logic for specific domain<br>• Lightweight and single-purpose<br>• Can be imported and used by other projects |
 | **Middleware** | Single middleware component | HTTP request/response processing | • HTTP request/response processing logic<br>• Reusable across different applications<br>• Follows Lokstra middleware patterns<br>• Can be imported by servers and modules |
-| **Plugin** | Collection similar to module | Dynamic loading and hot-swapping | • Handlers, middlewares, and services<br>• Compiled as shared object (.so) binary<br>• Can be dynamically loaded at runtime<br>• Provides hot-swappable functionality |
+| **Plugin** | Collection similar to module | Dynamic loading and hot-swapping | • Handlers, middlewares, and services<br>• Compiled as shared object (.so) binary<br>• Can be dynamically loaded at runtime<br> |
 
 ### Usage Examples by Project Type
 
@@ -256,7 +256,7 @@ The lint command is perfect for continuous integration:
 lokstra lint || exit 1
 ```
 
-### Template System
+## Template System
 
 Lokstra CLI uses a template-based generation system located in `./scaffold/` directory:
 
@@ -304,7 +304,7 @@ apps:
 services: []
 ```
 
-### Service URI Format
+## Service URI Format
 
 Lokstra uses a special URI format for service references:
 
@@ -316,8 +316,10 @@ lokstra://[package.]ServiceType/instance-name
 - `lokstra://UserService/main`
 - `lokstra://auth.TokenValidator/jwt`
 - `lokstra://db.Repository/users`
-
-## Development
+<br>
+<br>
+<br>
+## Lokstra Cli Development
 
 ### Prerequisites
 
@@ -361,7 +363,12 @@ lokstra_cli/
 │   ├── lint/            # Linting functionality
 │   └── uri/             # URI validation
 ├── scaffold/            # Project templates
-│   └── server/          # Server project template
+|   └── default/         # Project name: default
+│       ├── middleware/  # Middleware type project template
+│       ├── module/      # Module type project template
+│       ├── plugin/      # Plugin type project template
+│       ├── server/      # Server type project template
+│       └── service/     # Service type project template
 ├── lokstra/             # Main entry point
 │   └── main.go          # CLI entry point
 ├── go.mod
@@ -369,7 +376,7 @@ lokstra_cli/
 └── README.md
 ```
 
-## Contributing
+### Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -377,15 +384,15 @@ lokstra_cli/
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
+### License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
-## Related Projects
+### Related Projects
 
 - [Lokstra Framework](https://github.com/primadi/lokstra) - The core Lokstra framework for Go backend development
 
-## Support
+### Support
 
 - 📖 [Documentation](https://lokstra.dev/docs)
 - 💬 [GitHub Discussions](https://github.com/primadi/lokstra_cli/discussions)
