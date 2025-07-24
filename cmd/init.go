@@ -48,11 +48,8 @@ Examples:
 	Args: cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		validTypes := map[string]bool{
-			"server":     true,
-			"module":     true,
-			"service":    true,
-			"middleware": true,
-			"plugin":     true,
+			"server": true,
+			"module": true,
 		}
 
 		typeName := args[0]
@@ -60,7 +57,7 @@ Examples:
 
 		if !validTypes[typeName] {
 			fmt.Printf("❌ Invalid project type: %s\n", typeName)
-			fmt.Println("Valid types are: server, module, service, middleware, plugin")
+			fmt.Println("Valid types are: server, module")
 			os.Exit(1)
 		}
 
